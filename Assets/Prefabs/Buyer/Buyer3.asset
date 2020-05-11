@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00ab40e09a3725b46bc48372a3cb925b, type: 3}
+  m_Name: Buyer3
+  m_EditorClassIdentifier: 
+  name: Mr. Spratchniz
+  sprite: {fileID: 21300000, guid: ad7bd4b75d8c59841b5d1fedeff693e8, type: 3}
+  publicService1: {fileID: 11400000, guid: ab42006154f93234ba8a6e437f1484e3, type: 2}
+  sentencesPublicService1:
+  - Bonjour. J'aime la police.
+  percentagesSencences1:
+  - 1
+  publicService2: {fileID: 11400000, guid: 92430cd5781a1a44aa10da70c5d88eb1, type: 2}
+  sentencesPublicService2:
+  - Bonjour. J'aime les trains.
+  percentagesSencences2:
+  - 1

@@ -40,6 +40,14 @@ public class GameManager : MonoBehaviour
     public GameObject newsPrefab;
 
     public GameObject dialogView;
+    public List<BuyerSettings> buyersSettings;
+    public List<Buyer> buyers;
+    Queue<DialogueMessage> calls = new Queue<DialogueMessage>();
+    public GameObject phone;
+    public Sprite phoneNoCall;
+    public Sprite phoneCall;
+
+    public GameObject panelEnd;
     // Start is called before the first frame update
     void Start()
     {
@@ -63,10 +71,17 @@ public class GameManager : MonoBehaviour
         foreach (PublicServicesStats publicService in publicServicesSettings)
         {
             publicServices.Add(new PublicService(publicService.name, publicService.cost, publicService.income,
-                publicService.privMalus, publicService.budgetAllowed, publicService.debt, publicService.profitTendency, publicService.newsStory));
+                publicService.privMalus, publicService.budgetAllowed, publicService.debt, publicService.profitTendency, new NewsServicePrivateStory(publicService.newsStory)));
         }
 
         privatizedServices = new List<PublicService>();
+
+        buyers = new List<Buyer>();
+        foreach(BuyerSettings buyer in buyersSettings)
+        {
+            buyers.Add(new Buyer(buyer.name, buyer.sprite, buyer.publicService1, new List<string>(buyer.sentencesPublicService1), new List<float>(buyer.percentagesSencences1), 
+                buyer.publicService2, new List<string>(buyer.sentencesPublicService2), new List<float>(buyer.percentagesSencences2)));
+        }
     }
 
     public void ToogleBudget()
@@ -94,8 +109,13 @@ public class GameManager : MonoBehaviour
         if (dialogView.activeInHierarchy)
             dialogView.SetActive(false);
         else
+        {
             dialogView.SetActive(true);
+            phone.GetComponent<BoxCollider2D>().enabled = false;
+            phone.GetComponent<SpriteRenderer>().sprite = phoneNoCall;
+        }
 
+        PhoneUpdate();
     }
 
     public void Privatization (string name)
@@ -322,27 +342,94 @@ public class GameManager : MonoBehaviour
         LayoutRebuilder.ForceRebuildLayoutImmediate(privatizationListView.GetComponent<RectTransform>());
     }
 
+    public void PhoneUpdate()
+    {
+        if(calls.Count != 0)
+        {
+            DialogueMessage call = calls.Dequeue();
+            dialogView.transform.Find("Sprite").GetComponent<Image>().sprite = call.sprite;
+            dialogView.transform.Find("Name").GetComponent<Text>().text = call.displayName;
+            dialogView.transform.Find("Text").GetComponent<Text>().text = call.text;
+
+            phone.GetComponent<BoxCollider2D>().enabled = true;
+            phone.GetComponent<SpriteRenderer>().sprite = phoneCall;
+        }
+    }
+
     IEnumerator DateUpdate()
     {
         yield return new WaitForSecondsRealtime(speedTime);
-
-        date = date.AddMonths(1);
-        displayDate.text = date.ToString("y",new CultureInfo("fr-FR"));
-        foreach(PublicService publicService in publicServices)
+        if(!dialogView.activeInHierarchy)
         {
-            publicService.TimeUpdate();
-        }
+            date = date.AddMonths(1);
+            displayDate.text = date.ToString("y", new CultureInfo("fr-FR"));
+            foreach (PublicService publicService in publicServices)
+            {
+                publicService.TimeUpdate();
+            }
 
-        foreach (PublicService privatizedService in privatizedServices)
-        {
-            privatizedService.NewsUpdate();
-        }
+            foreach (PublicService privatizedService in privatizedServices)
+            {
+                privatizedService.NewsUpdate();
+            }
 
-        UpdateOtherBudgetValue();
-        BudgetTextUpdate();
-        PrivatizationUpdateText();
+            UpdateOtherBudgetValue();
+            BudgetTextUpdate();
+            PrivatizationUpdateText();
+            foreach(Buyer buyer in buyers)
+            {
+                for (int i = 0; i < publicServices.Count; i++)
+                {
+                    if(publicServices[i].Name == buyer.publicService1.name)
+                    {
+                        for (int y = buyer.sentencesPublicService1.Count -1; y >= 0; y--)
+                        {
+                            if(buyer.percentagesSencences1[y] >= publicServices[i].Desirability)
+                            {
+                                calls.Enqueue(new DialogueMessage(buyer.name, buyer.sentencesPublicService1[y], buyer.sprite));
+                                buyer.percentagesSencences1.RemoveRange(0,y+1);
+                                buyer.sentencesPublicService1.RemoveRange(0, y+1);
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
+                for (int i = 0; i < publicServices.Count; i++)
+                {
+                    if (publicServices[i].Name == buyer.publicService2.name)
+                    {
+                        for (int y = buyer.sentencesPublicService2.Count - 1; y >= 0; y--)
+                        {
+                            if (buyer.percentagesSencences2[y] >= publicServices[i].Desirability)
+                            {
+                                calls.Enqueue(new DialogueMessage(buyer.name, buyer.sentencesPublicService2[y], buyer.sprite));
+                                buyer.percentagesSencences2.RemoveRange(0, y+1);
+                                buyer.sentencesPublicService2.RemoveRange(0, y+1);
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+
+            PhoneUpdate();
+            if (publicServices.Count == 0)
+                EndGame();
+        }
 
         StartCoroutine(DateUpdate());
+    }
+
+    public void EndGame()
+    {
+        panelEnd.SetActive(true);
+    }
+
+    public void CloseGame()
+    {
+        Application.Quit();
     }
 
     private void OnDestroy()
