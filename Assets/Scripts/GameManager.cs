@@ -21,13 +21,25 @@ public class GameManager : MonoBehaviour
     public float debtConvertRate = 0.5f;
     public int debtSlowingEffect = 1000000;
 
+    public List<PublicServicesStats> publicServicesSettings;
     public List<PublicService> publicServices;
+    public List<PublicService> privatizedServices;
     public GameObject budgetView;
     public GameObject budgetListView;
     public GameObject prefabBudget;
 
     public int intervalValueBudget = 50;
+    public int plusValueMultiplier = 10;
+    public int privateInvestMinValue = 10000;
 
+    public GameObject privatizationView;
+    public GameObject privatizationListView;
+    public GameObject prefabPrivat;
+
+    public GameObject newsListView;
+    public GameObject newsPrefab;
+
+    public GameObject dialogView;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,18 +60,13 @@ public class GameManager : MonoBehaviour
         treasury = 0;
 
         publicServices = new List<PublicService>();
-        publicServices.Add(new PublicService("SNCF", -100, 100, 1000, 100,-10000, 0.4f));
-        publicServices.Add(new PublicService("EDF", -999, 1500, 100, 250, -10000, 0.4f));
-        publicServices.Add(new PublicService("Améli", -999, 1500, 100, 250, -10000, 0.4f));
-        publicServices.Add(new PublicService("Police", -999, 1500, 100, 250, -10000, 0.4f));
-        publicServices.Add(new PublicService("Hopitaux", -999, 1500, 100, 250, -10000, 0.4f));
-        publicServices.Add(new PublicService("Pompiers", -999, 1500, 100, 250, -10000, 0.4f));
-    }
+        foreach (PublicServicesStats publicService in publicServicesSettings)
+        {
+            publicServices.Add(new PublicService(publicService.name, publicService.cost, publicService.income,
+                publicService.privMalus, publicService.budgetAllowed, publicService.debt, publicService.profitTendency, publicService.newsStory));
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        privatizedServices = new List<PublicService>();
     }
 
     public void ToogleBudget()
@@ -70,6 +77,51 @@ public class GameManager : MonoBehaviour
             budgetView.SetActive(true);
 
         BudgetTextUpdate();
+    }
+
+    public void TooglePrivatization()
+    {
+        if (privatizationView.activeInHierarchy)
+            privatizationView.SetActive(false);
+        else
+            privatizationView.SetActive(true);
+
+        PrivatizationUpdateText();
+    }
+
+    public void TooglePhone()
+    {
+        if (dialogView.activeInHierarchy)
+            dialogView.SetActive(false);
+        else
+            dialogView.SetActive(true);
+
+    }
+
+    public void Privatization (string name)
+    {
+        for(int i = 0; i < publicServices.Count ; i++)
+        {
+            if(publicServices[i].Name == name)
+            {
+                privatizedServices.Add(publicServices[i]);
+                publicServices.RemoveAt(i);
+                break;
+            }
+        }
+        PrivatizationUpdateText();
+    }
+
+    public void NewsNotif(string title, string text)
+    {
+        GameObject instance = Instantiate(newsPrefab);
+        instance.transform.SetParent(newsListView.transform);
+        instance.transform.SetAsFirstSibling();
+        instance.transform.Find("Title").GetComponent<Text>().text = title;
+        instance.transform.Find("Text").GetComponent<Text>().text = text;
+
+        Canvas.ForceUpdateCanvases();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(newsListView.GetComponent<RectTransform>());
     }
 
     public void MinusBudgetValue(string ServiceName)
@@ -160,6 +212,11 @@ public class GameManager : MonoBehaviour
         budgetView.transform.Find("Panel/BalanceWrapper/ValuesLayout/DebtValue").GetComponent<Text>().text = TotalDebt().ToString() ;
         budgetView.transform.Find("Panel/BalanceWrapper/ValuesLayout/DebtValue").GetComponent<Text>().color = ColorTextCheck(TotalDebt());
 
+        if (publicServices.Count == 0)
+            budgetView.transform.Find("Panel/None").gameObject.SetActive(true);
+        else
+            budgetView.transform.Find("Panel/None").gameObject.SetActive(false);
+
     }
 
     private Color ColorTextCheck(float valueToTest)
@@ -233,6 +290,38 @@ public class GameManager : MonoBehaviour
         otherIncomes = (int)(otherIncomes * (1 + UnityEngine.Random.Range(-0.1f, 0.1f)));
     }
 
+    public void PrivatizationUpdateText()
+    {
+        Transform[] children = privatizationListView.GetComponentsInChildren<Transform>(true);
+        for (int i = 0; i < children.Length; i++)
+        {
+            if (children[i] != privatizationListView.transform)
+                Destroy(children[i].gameObject);
+        }
+
+        foreach (PublicService publicService in publicServices)
+        {
+            GameObject instance = Instantiate(prefabPrivat);
+            instance.transform.SetParent(privatizationListView.transform);
+
+            instance.transform.Find("Public Service Name").GetComponent<Text>().text = publicService.Name;
+            instance.transform.Find("InfoTab/ValueColumn/BuyDebtValue").GetComponent<Text>().text = "+" + Mathf.Abs(publicService.Debt).ToString();
+            instance.transform.Find("InfoTab/ValueColumn/PlusValueValue").GetComponent<Text>().text = "+" + publicService.PlusValue.ToString();
+            instance.transform.Find("InfoTab/ValueColumn/SellingPriceValue").GetComponent<Text>().text = "+" + (Mathf.Abs(publicService.Debt) + publicService.PlusValue).ToString();
+
+            instance.transform.Find("PrivatizationConfirm").GetComponent<Button>().onClick.AddListener(() => Privatization(publicService.Name));
+        }
+
+        if (publicServices.Count == 0)
+            privatizationView.transform.Find("Panel/None").gameObject.SetActive(true);
+        else
+            privatizationView.transform.Find("Panel/None").gameObject.SetActive(false);
+
+
+        Canvas.ForceUpdateCanvases();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(privatizationListView.GetComponent<RectTransform>());
+    }
+
     IEnumerator DateUpdate()
     {
         yield return new WaitForSecondsRealtime(speedTime);
@@ -243,8 +332,15 @@ public class GameManager : MonoBehaviour
         {
             publicService.TimeUpdate();
         }
+
+        foreach (PublicService privatizedService in privatizedServices)
+        {
+            privatizedService.NewsUpdate();
+        }
+
         UpdateOtherBudgetValue();
         BudgetTextUpdate();
+        PrivatizationUpdateText();
 
         StartCoroutine(DateUpdate());
     }

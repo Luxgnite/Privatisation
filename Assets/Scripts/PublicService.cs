@@ -12,11 +12,11 @@ public class PublicService
     int debt;
     int treasury;
     float profitTendency;
-    int privateInvestMinValue = 10000;
+    NewsServicePrivateStory newsStory;
 
     public PublicService(string pName, 
         int baseCost, int baseIncome, int basePrivMalus, 
-        int baseBudgetAllowed, int baseDebt, float pProfitTendency)
+        int baseBudgetAllowed, int baseDebt, float pProfitTendency, NewsServicePrivateStory pNewsStory)
     {
         name = pName;
         cost = baseCost;
@@ -25,6 +25,7 @@ public class PublicService
         privMalus = basePrivMalus;
         debt = baseDebt;
         profitTendency = pProfitTendency;
+        newsStory = pNewsStory;
     }
 
     public string Name
@@ -87,6 +88,14 @@ public class PublicService
         }
     }
 
+    public NewsServicePrivateStory NewsHistory
+    {
+        get
+        {
+            return NewsHistory;
+        }
+    }
+
     public int Balance
     {
         get
@@ -99,7 +108,15 @@ public class PublicService
     {
         get
         {
-            return Balance/privateInvestMinValue;
+            return Balance/GameManager._instance.privateInvestMinValue;
+        }
+    }
+
+    public int PlusValue
+    {
+        get
+        {
+            return (int) (Income * (GameManager._instance.plusValueMultiplier * Desirability));
         }
     }
 
@@ -127,5 +144,21 @@ public class PublicService
         debtSlow =  ((debt / GameManager._instance.debtSlowingEffect) > 1f) ?  0.99f : debt / GameManager._instance.debtSlowingEffect;
         income = (int)(income * (1f + (profitTendency * (1f-debtSlow)) + Random.Range(-0.1f, 0.1f)));
         privMalus = (int)(privMalus * (1 + (profitTendency / 2)));
+    }
+
+    public void NewsUpdate()
+    {
+        Debug.Log("Checking news for " + name);
+        for (int i = 0; i < newsStory.historyTempo.Count; i++)
+        {
+            if (newsStory.historyTempo[i] != 0)
+            {
+                Debug.Log("Stopping at the " + i + " news. Count before posting : " + newsStory.historyTempo[i]);
+                newsStory.historyTempo[i]--;
+                if (newsStory.historyTempo[i] == 0)
+                    GameManager._instance.NewsNotif(newsStory.history[i].title, newsStory.history[i].text);
+                break;
+            }
+        }
     }
 }

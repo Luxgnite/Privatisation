@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 296775840ed5d054eb0c4d16effc8802, type: 3}
+  m_Name: Hospital
+  m_EditorClassIdentifier: 
+  name: Hopitaux
+  cost: -999
+  income: 1500
+  privMalus: 100
+  budgetAllowed: 250
+  debt: -10000
+  treasury: 0
+  profitTendency: 0.4
+  newsStory: {fileID: 11400000, guid: eef276a0c974ff24d94b10e5e2ce2fa8, type: 2}

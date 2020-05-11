@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6c3c2df70393d46a6c0360177e052a, type: 3}
+  m_Name: Assurance1
+  m_EditorClassIdentifier: 
+  title: "Les pauvres gal\xE8rent"
+  text: "L'assurance part d\xE9sormais sur un syst\xE8me de retraite par capital.
+    Seuls ceux qui peuvent payer suffisament ont acc\xE8s \xE0 une bonne assurance
+    sant\xE9."
