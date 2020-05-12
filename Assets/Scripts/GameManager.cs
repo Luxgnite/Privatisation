@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         foreach (PublicServicesStats publicService in publicServicesSettings)
         {
             publicServices.Add(new PublicService(publicService.name, publicService.cost, publicService.income,
-                publicService.privMalus, publicService.budgetAllowed, publicService.debt, publicService.profitTendency, new NewsServicePrivateStory(publicService.newsStory)));
+                publicService.privMalus, publicService.budgetAllowed, publicService.debt, publicService.profitTendency, Instantiate(publicService.newsStory)));
         }
 
         privatizedServices = new List<PublicService>();

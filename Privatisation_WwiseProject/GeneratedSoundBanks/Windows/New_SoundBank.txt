@@ -1,0 +1,13 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1761501022	Book			\Default Work Unit\Book	
+	3126687001	Paper			\Default Work Unit\Paper	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	7444912	book_1	D:\Users\Ewan\Documents\Projets\Privatisation\Privatisation_WwiseProject\.cache\Windows\SFX\book_1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Book\book_1		299072
+	46093622	Rameau - Pièces de clavecin en concert N 5 (La Marais) Il Giardino Armonico	D:\Users\Ewan\Documents\Projets\Privatisation\Privatisation_WwiseProject\.cache\Windows\SFX\Rameau - Pièces de clavecin en concert N 5 (La Marais) Il Giardino Armonico_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Music\Rameau - Pièces de clavecin en concert N 5 (La Marais) Il Giardino Armonico\Rameau - Pièces de clavecin en concert N 5 (La Marais) Il Giardino Armonico		23806740
+	212958116	paper_2	D:\Users\Ewan\Documents\Projets\Privatisation\Privatisation_WwiseProject\.cache\Windows\SFX\paper_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Paper\paper_2		168672
+	313831248	book_2	D:\Users\Ewan\Documents\Projets\Privatisation\Privatisation_WwiseProject\.cache\Windows\SFX\book_2_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Book\book_2		204864
+	319002021	ring	D:\Users\Ewan\Documents\Projets\Privatisation\Privatisation_WwiseProject\.cache\Windows\SFX\ring_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\ring		280640
+	400604506	paper_1	D:\Users\Ewan\Documents\Projets\Privatisation\Privatisation_WwiseProject\.cache\Windows\SFX\paper_1_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Paper\paper_1		200960
+	993919379	paper_3	D:\Users\Ewan\Documents\Projets\Privatisation\Privatisation_WwiseProject\.cache\Windows\SFX\paper_3_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Paper\paper_3		129216
+

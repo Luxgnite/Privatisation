@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{2FCC6AA7-0ED7-45F7-B631-1BE57B41B4B6}" SchemaVersion="97">
+	<InteractiveMusic>
+		<WorkUnit Name="Default Work Unit" ID="{2FCC6AA7-0ED7-45F7-B631-1BE57B41B4B6}" PersistMode="Standalone">
+			<ChildrenList>
+				<MusicPlaylistContainer Name="Music" ID="{DDD01B99-59B0-439B-BB4E-35C224E85116}" ShortID="690546487">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3FD09C9-C86F-4451-9BD0-F937F5E9C893}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{C58B5302-1C4A-45A4-8EBA-74FCB13A772B}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<MusicSegment Name="Rameau - Pièces de clavecin en concert N 5 (La Marais) Il Giardino Armonico" ID="{FFEACA49-9482-4A14-A7CC-A9085CFC32A9}" ShortID="890063033">
+							<PropertyList>
+								<Property Name="EndPosition" Type="Real64" Value="134958.480725624"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3FD09C9-C86F-4451-9BD0-F937F5E9C893}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{C58B5302-1C4A-45A4-8EBA-74FCB13A772B}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicTrack Name="Rameau - Pièces de clavecin en concert N 5 (La Marais) Il Giardino Armonico" ID="{2841611D-D609-44FC-A008-3D0F9C481C9D}" ShortID="917110432">
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{C58B5302-1C4A-45A4-8EBA-74FCB13A772B}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Rameau - Pièces de clavecin en concert N 5 (La Marais) Il Giardino Armonico" ID="{773803E7-E170-45D8-B511-D5CCE994498A}">
+											<Language>SFX</Language>
+											<AudioFile>Rameau - Pièces de clavecin en concert N 5 (La Marais) Il Giardino Armonico.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="46093622"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<TransitionList>
+										<MusicTransition Name="Root" ID="{842C2AD6-A558-423B-BEBA-726D82B419A6}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</TransitionList>
+									<SequenceList>
+										<MusicTrackSequence Name="" ID="{90446ED8-10D6-409D-8173-6CF81C710C22}">
+											<ClipList>
+												<MusicClip Name="Rameau - Pièces de clavecin en concert N 5 (La Marais) Il Giardino Armonico" ID="{872FABD9-F99C-4669-9DB7-D5E8E13BE6E4}">
+													<PropertyList>
+														<Property Name="EndTrimOffset" Type="Real64" Value="134958.480725624"/>
+														<Property Name="FadeInMode" Type="int16" Value="0"/>
+														<Property Name="FadeOutMode" Type="int16" Value="0"/>
+													</PropertyList>
+													<AudioSourceRef Name="Rameau - Pièces de clavecin en concert N 5 (La Marais) Il Giardino Armonico" ID="{773803E7-E170-45D8-B511-D5CCE994498A}"/>
+												</MusicClip>
+											</ClipList>
+										</MusicTrackSequence>
+									</SequenceList>
+								</MusicTrack>
+							</ChildrenList>
+							<CueList>
+								<MusicCue Name="Entry Cue" ID="{4EDFDDC8-4EE9-4B69-B7E3-FF5FC1FE2E53}"/>
+								<MusicCue Name="Exit Cue" ID="{54B475EF-5381-4D2E-9009-4CA143802354}">
+									<PropertyList>
+										<Property Name="CueType" Type="int16" Value="1"/>
+										<Property Name="TimeMs" Type="Real64" Value="134958.480725624"/>
+									</PropertyList>
+								</MusicCue>
+							</CueList>
+						</MusicSegment>
+					</ChildrenList>
+					<TransitionList>
+						<MusicTransition Name="Root" ID="{9EB607D1-5967-494F-9440-81E23A2D1418}">
+							<PropertyList>
+								<Property Name="IsFolder" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<MusicTransition Name="Transition" ID="{4AC8E6CC-C59E-465C-AABB-C68A3FF6BCE7}">
+									<TransitionInfo/>
+								</MusicTransition>
+							</ChildrenList>
+							<TransitionInfo/>
+						</MusicTransition>
+					</TransitionList>
+					<Playlist>
+						<MusicPlaylistItem Name="" ID="{C1272C5F-298F-4B17-8A15-AAE2BCC55B8A}" ShortID="420354457"/>
+					</Playlist>
+				</MusicPlaylistContainer>
+			</ChildrenList>
+		</WorkUnit>
+	</InteractiveMusic>
+</WwiseDocument>

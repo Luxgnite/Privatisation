@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{9F3C4025-7041-4FED-B31A-9A6D3258542C}" SchemaVersion="97">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{9F3C4025-7041-4FED-B31A-9A6D3258542C}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Book" ID="{65F04D9D-55D7-42D7-B87F-8683D2199626}">
+					<ChildrenList>
+						<Action Name="" ID="{01DBDB41-D88D-4E3E-B2D8-B142E613016A}" ShortID="929154181">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Book" ID="{35AB79A5-6980-4114-826B-B1E56E14A30F}" WorkUnitID="{A294AE99-83D8-4B8E-AE43-47196FEE2B40}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Paper" ID="{B01FB05E-1654-4406-BA4B-6D71EFA9F954}">
+					<ChildrenList>
+						<Action Name="" ID="{5FA1C295-6BD9-4060-B3B9-F63E880DF6DD}" ShortID="1055992411">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Paper" ID="{66BAEED9-DD20-46BE-A435-953E677A9D7B}" WorkUnitID="{A294AE99-83D8-4B8E-AE43-47196FEE2B40}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
