@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c6c3c2df70393d46a6c0360177e052a, type: 3}
-  m_Name: Assurance1
+  m_Name: Electricity2
   m_EditorClassIdentifier: 
-  title: "Les pauvres gal\xE8rent"
-  text: "L'assurance part d\xE9sormais sur un syst\xE8me de retraite par capital.
-    Seuls ceux qui peuvent payer suffisament ont acc\xE8s \xE0 une bonne assurance
-    sant\xE9."
+  title: Mr. Raviez, multimillionaire
+  text: "Mr. Raviez figure d\xE9sormais, notamment avec l'achat de service \xE9lectrique
+    du pays, parmi les pointures financi\xE8res les plus importantes du pays."

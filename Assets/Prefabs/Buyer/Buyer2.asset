@@ -16,11 +16,19 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: e901e1aaa5bce6a4fae70d146d1cda1a, type: 3}
   publicService1: {fileID: 11400000, guid: 017aeecf8a2b4a5429999c580c993270, type: 2}
   sentencesPublicService1:
-  - Bonjour. J'aime les pompiers.
+  - "Pr\xE9sident,\nJe me permet de vous contacter car apr\xE8s avoir analyser l'\xE9tat
+    de notre service de pompier, je pense qu'il serait ajust\xE9 de notre part de
+    le laisser prendre part aux festivit\xE9s du march\xE9! Cela permettrait \xE0
+    nos pompiers d'\xEAtre mieux \xE9quip\xE9s, de d\xE9velopper fortement la recherche
+    et ce, en nous permettan de gu\xE9rir de notre dette. N'est-ce pas formidable?"
   percentagesSencences1:
   - 1
   publicService2: {fileID: 11400000, guid: 987357443af1227419dc7daf96d5f740, type: 2}
   sentencesPublicService2:
-  - Bonjour. J'aime les assurances.
+  - "Bien le bonjour, Pr\xE9sident. A la simple vision de notre syst\xE8me \xE9ducatif,
+    je tremble d'excitation en imaginant ce qu'il pourrait \xEAtre, si nous laissions
+    ce terrain jouir des lois du march\xE9. Des \xE9l\xE8ves fortement comp\xE9tents,
+    d\xE9j\xE0 pr\xEAt pour le march\xE9 du travail. Quel r\xEAve grandiose, n'est-ce
+    pas ?"
   percentagesSencences2:
-  - 0
+  - 2

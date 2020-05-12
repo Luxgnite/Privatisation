@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296775840ed5d054eb0c4d16effc8802, type: 3}
   m_Name: Hospital
   m_EditorClassIdentifier: 
-  name: Hopitaux
-  cost: -999
+  name: Hopital
+  cost: -3000
   income: 1500
   privMalus: 100
   budgetAllowed: 250
-  debt: -10000
+  debt: -25000
   treasury: 0
-  profitTendency: 0.4
+  profitTendency: 0.3
   newsStory: {fileID: 11400000, guid: eef276a0c974ff24d94b10e5e2ce2fa8, type: 2}

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296775840ed5d054eb0c4d16effc8802, type: 3}
   m_Name: Train
   m_EditorClassIdentifier: 
-  name: SNCF
-  cost: -100
-  income: 100
+  name: Chemin de fer
+  cost: -10000
+  income: 500
   privMalus: 1000
-  budgetAllowed: 100
-  debt: -10000
+  budgetAllowed: 150
+  debt: -100000
   treasury: 0
   profitTendency: 0.4
   newsStory: {fileID: 11400000, guid: 568c229804491224ea0f6f284730afc5, type: 2}

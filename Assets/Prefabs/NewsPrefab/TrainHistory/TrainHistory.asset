@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   history:
   - {fileID: 11400000, guid: f16ba861639fd9a409ff944786497f17, type: 2}
-  historyTempo: 04000000
+  - {fileID: 11400000, guid: 0d4777b8cc6996f498f7a7b47f1769f2, type: 2}
+  - {fileID: 11400000, guid: 47e9ce81cde8da64d80f456bb5c43953, type: 2}
+  historyTempo: 040000000200000003000000

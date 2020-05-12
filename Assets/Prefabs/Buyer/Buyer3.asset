@@ -16,11 +16,21 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: ad7bd4b75d8c59841b5d1fedeff693e8, type: 3}
   publicService1: {fileID: 11400000, guid: ab42006154f93234ba8a6e437f1484e3, type: 2}
   sentencesPublicService1:
-  - Bonjour. J'aime la police.
+  - "Je me permet de vous joindre solonellement pour vous faire une demande ch\xE8re
+    \xE0 mon coeur : je suis ici vous demander de donner plus de moyens \xE0 la police.
+    J'ai toujours eu \xE0 coeur de faire r\xE9gner l'ordre, et ces derniers temps,
+    les peu de moyens dont nous disposons pour les gardiens de l'ordre de suffisent
+    plus. Si nous privatisons la police, cela nous permettrait de faire r\xE9gner
+    la loi dans chaque endroit o\xF9 il nous l'\xE9tait auparavant, ne serait-ce
+    pas un monde meilleur et plus juste ?"
   percentagesSencences1:
-  - 1
+  - 1.5
   publicService2: {fileID: 11400000, guid: 92430cd5781a1a44aa10da70c5d88eb1, type: 2}
   sentencesPublicService2:
-  - Bonjour. J'aime les trains.
+  - "Mes salutations, votre Pr\xE9sidence.\nNotre syst\xE8me ferroviaire est malheureusement
+    en mauvais \xE9tat, et ce non pas \xE0 cause de notre manque d'investissement.
+    Non, le probl\xE8me v\xE9ritable vient du terreau fertile \xE0 la paresse qu'est
+    la garantie de l'emploi. Nous gagnerions beaucoup plus en efficacit\xE9 en leur
+    faisant faire \xE0 la concurrence, qu'en pensez-vous ?"
   percentagesSencences2:
-  - 1
+  - 0.7

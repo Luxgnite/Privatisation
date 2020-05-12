@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6c3c2df70393d46a6c0360177e052a, type: 3}
   m_Name: Firefighter1
   m_EditorClassIdentifier: 
-  title: Un couple mets en justice le service de pompier
+  title: "Un couple tente de mettre en justice une caserne de pompiers priv\xE9,
+    en vain"
   text: "Un couple n'ayant pas souscris \xE0 un abonnement aux pompiers priv\xE9s
     ont vu leur demeure br\xFBl\xE9. Ils ont eu beau appel\xE9 les pompiers, ceux-ci
     ne sont pas venus \xE0 leur aide car \"ils ne faisaient pas parti de la liste

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6c3c2df70393d46a6c0360177e052a, type: 3}
+  m_Name: School1
+  m_EditorClassIdentifier: 
+  title: "Ecole d\xE9sormais complexe d'acc\xE8s"
+  text: "Depuis la transformation de toutes les \xE9coles publiques en priv\xE9s,
+    l'acc\xE8s \xE0 l'\xE9ducation, notamment sup\xE9rieure, est devenue extr\xEAment
+    complexe \xE0 une grande partie de la population. Au final, seul les enfants
+    de cadres arrivent encore \xE0 \xE9tudier pour devenir cadre."

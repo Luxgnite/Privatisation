@@ -11,15 +11,15 @@ public class GameManager : MonoBehaviour
 
     public Text displayDate;
     public DateTime date;
-    public int speedTime = 4;
+    public int speedTime;
 
-    public int treasury = 0;
-    public int otherExpenses = -10000;
-    public int otherIncomes = 10000;
-    public int debt = -13500;
+    public int treasury;
+    public int otherExpenses;
+    public int otherIncomes;
+    public int debt;
     [Range(0.0f, 1.0f)]
-    public float debtConvertRate = 0.5f;
-    public int debtSlowingEffect = 1000000;
+    public float debtConvertRate;
+    public int debtSlowingEffect;
 
     public List<PublicServicesStats> publicServicesSettings;
     public List<PublicService> publicServices;
@@ -46,8 +46,15 @@ public class GameManager : MonoBehaviour
     public GameObject phone;
     public Sprite phoneNoCall;
     public Sprite phoneCall;
+    public bool calling = false;
 
-    public GameObject panelEnd;
+    public List<GameObject> panelEnd;
+    public int score;
+    public Text scoreDisplay;
+    public Animator comboPanel;
+    public Text comboDisplay1;
+    public Text comboDisplay2;
+    public int combo = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,7 +69,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
 
-        date = new DateTime(2008,5,1);
+        date = new DateTime(2009,12,12);
         StartCoroutine(DateUpdate());
 
         treasury = 0;
@@ -82,6 +89,8 @@ public class GameManager : MonoBehaviour
             buyers.Add(new Buyer(buyer.name, buyer.sprite, buyer.publicService1, new List<string>(buyer.sentencesPublicService1), new List<float>(buyer.percentagesSencences1), 
                 buyer.publicService2, new List<string>(buyer.sentencesPublicService2), new List<float>(buyer.percentagesSencences2)));
         }
+
+        DateUpdate();
     }
 
     public void ToogleBudget()
@@ -91,6 +100,7 @@ public class GameManager : MonoBehaviour
         else
             budgetView.SetActive(true);
 
+        AkSoundEngine.PostEvent("Book", gameObject);
         BudgetTextUpdate();
     }
 
@@ -101,6 +111,7 @@ public class GameManager : MonoBehaviour
         else
             privatizationView.SetActive(true);
 
+        AkSoundEngine.PostEvent("Paper", gameObject);
         PrivatizationUpdateText();
     }
 
@@ -110,12 +121,16 @@ public class GameManager : MonoBehaviour
             dialogView.SetActive(false);
         else
         {
+            AkSoundEngine.PostEvent("Stop_Ring", gameObject);
             dialogView.SetActive(true);
             phone.GetComponent<BoxCollider2D>().enabled = false;
             phone.GetComponent<SpriteRenderer>().sprite = phoneNoCall;
+            PhoneUpdate();
+            calling = false;
         }
 
-        PhoneUpdate();
+        AkSoundEngine.PostEvent("Phone", gameObject);
+        
     }
 
     public void Privatization (string name)
@@ -124,6 +139,13 @@ public class GameManager : MonoBehaviour
         {
             if(publicServices[i].Name == name)
             {
+                treasury += publicServices[i].PlusValue;
+                score += publicServices[i].PlusValue * combo;
+                scoreDisplay.text = score.ToString();
+                comboDisplay1.text = combo.ToString();
+                comboDisplay2.text = combo.ToString();
+                comboPanel.SetBool("show", true);
+                combo++;
                 privatizedServices.Add(publicServices[i]);
                 publicServices.RemoveAt(i);
                 break;
@@ -204,14 +226,14 @@ public class GameManager : MonoBehaviour
             instance.transform.Find("WrapperData/FieldValue/BudgetValue").GetComponent<Text>().text = "+" + publicService.BudgetAllowed.ToString();
             instance.transform.Find("WrapperData/FieldValue/BudgetValue").GetComponent<Text>().color = ColorTextCheck(publicService.BudgetAllowed);
 
-            if(publicService.Balance > 0)
-                instance.transform.Find("WrapperData/FieldValue/BalanceValue").GetComponent<Text>().text = "+" + publicService.Balance.ToString();
+            if(publicService.OverallBalance > 0)
+                instance.transform.Find("WrapperData/FieldValue/BalanceValue").GetComponent<Text>().text = "+" + publicService.OverallBalance.ToString();
             else
-                instance.transform.Find("WrapperData/FieldValue/BalanceValue").GetComponent<Text>().text = "+" + publicService.Balance.ToString();
-            instance.transform.Find("WrapperData/FieldValue/BalanceValue").GetComponent<Text>().color = ColorTextCheck(publicService.Balance);
+                instance.transform.Find("WrapperData/FieldValue/BalanceValue").GetComponent<Text>().text = publicService.OverallBalance.ToString();
+            instance.transform.Find("WrapperData/FieldValue/BalanceValue").GetComponent<Text>().color = ColorTextCheck(publicService.OverallBalance);
 
-            instance.transform.Find("WrapperData/FieldValue/DebtValue").GetComponent<Text>().text = publicService.Debt.ToString();
-            instance.transform.Find("WrapperData/FieldValue/DebtValue").GetComponent<Text>().color = ColorTextCheck(publicService.Debt);
+            instance.transform.Find("WrapperData/FieldValue/DebtValue").GetComponent<Text>().text = publicService.NextMonthDebt.ToString();
+            instance.transform.Find("WrapperData/FieldValue/DebtValue").GetComponent<Text>().color = ColorTextCheck(publicService.NextMonthDebt);
 
             instance.transform.Find("WrapperData/FieldValue/Minus Budget Button").GetComponent<Button>().onClick.AddListener(() => MinusBudgetValue(publicService.Name));
             instance.transform.Find("WrapperData/FieldValue/Plus Budget Button").GetComponent<Button>().onClick.AddListener(() => PlusBudgetValue(publicService.Name));
@@ -257,7 +279,12 @@ public class GameManager : MonoBehaviour
 
     public int Balance()
     {
-        return otherExpenses + otherIncomes;
+        int result = 0;
+        foreach (PublicService publicService in publicServices)
+        {
+            result -= publicService.BudgetAllowed;
+        }
+        return otherExpenses + otherIncomes + result;
     }
 
     public int TotalBalance()
@@ -266,11 +293,63 @@ public class GameManager : MonoBehaviour
 
         foreach(PublicService publicService in publicServices)
         {
-            result += publicService.Balance;
-            result += -publicService.BudgetAllowed;
+            result -= publicService.BudgetAllowed;
         }
 
-        return (result + otherExpenses + otherIncomes + treasury);
+        return (result + otherExpenses + otherIncomes + NextMonthDividende);
+    }
+
+    public int NextMonthDebt
+    {
+        get
+        {
+            int tempDebt = debt;
+            int balance = Balance();
+            //Pour chaque service publique, on réclame le reste de trésorie
+            foreach (PublicService publicService in publicServices)
+            {
+                balance += publicService.NextMonthDividende;
+            }
+
+            int tempTreasury = balance + treasury;
+            //Si la trésorie est négative, on l'ajoute à la dette
+            if (tempTreasury < 0)
+            {
+                tempDebt += tempTreasury;
+                tempTreasury = 0;
+            }
+            else
+            {
+                int debtConvertion = (int)(tempTreasury * debtConvertRate);
+                if (tempDebt + debtConvertion > 0)
+                {
+                    tempTreasury += tempDebt;
+                    tempDebt = 0;
+                }
+                else
+                {
+                    tempTreasury -= debtConvertion;
+                    tempDebt += debtConvertion;
+                }
+            }
+
+            return tempDebt;
+        }
+    }
+
+    public int NextMonthDividende
+    {
+        get
+        {
+            int dividende = 0;
+            foreach (PublicService publicService in publicServices)
+            {
+                dividende += publicService.NextMonthDividende;
+            }
+
+            return dividende;
+
+        }
     }
 
     public int TotalDebt()
@@ -288,22 +367,32 @@ public class GameManager : MonoBehaviour
     public void UpdateOtherBudgetValue()
     {
         int balance = Balance();
-        foreach(PublicService publicService in publicServices)
+        //Pour chaque service publique, on réclame le reste de trésorie
+        foreach (PublicService publicService in publicServices)
         {
             balance += publicService.StateDividendes();
         }
 
-        if (balance <= 0)
-            debt += balance;
-        else if((balance * debtConvertRate + debt) >= 0 )
+        treasury += balance;
+        //Si la trésorie est négative, on l'ajoute à la dette
+        if (treasury < 0)
         {
-            treasury += balance + debt;
-            debt = 0;
+            debt += treasury;
+            treasury = 0;
         }
         else
         {
-            treasury += (int)(balance * (1f - debtConvertRate));
-            debt += (int)(balance * debtConvertRate);
+            int debtConvertion = (int)(treasury * debtConvertRate);
+            if (debt + debtConvertion > 0)
+            {
+                treasury += debt;
+                debt = 0;
+            }
+            else
+            {
+                treasury -= debtConvertion;
+                debt += debtConvertion;
+            }
         }
 
         otherExpenses = (int)(otherExpenses * (1 + UnityEngine.Random.Range(-0.1f, 0.1f)));
@@ -344,7 +433,7 @@ public class GameManager : MonoBehaviour
 
     public void PhoneUpdate()
     {
-        if(calls.Count != 0)
+        if(calls.Count != 0 && !calling)
         {
             DialogueMessage call = calls.Dequeue();
             dialogView.transform.Find("Sprite").GetComponent<Image>().sprite = call.sprite;
@@ -353,6 +442,8 @@ public class GameManager : MonoBehaviour
 
             phone.GetComponent<BoxCollider2D>().enabled = true;
             phone.GetComponent<SpriteRenderer>().sprite = phoneCall;
+            AkSoundEngine.PostEvent("Start_Ring", gameObject);
+            calling = true;
         }
     }
 
@@ -363,6 +454,8 @@ public class GameManager : MonoBehaviour
         {
             date = date.AddMonths(1);
             displayDate.text = date.ToString("y", new CultureInfo("fr-FR"));
+            comboPanel.SetBool("show", false);
+            combo = 1;
             foreach (PublicService publicService in publicServices)
             {
                 publicService.TimeUpdate();
@@ -415,8 +508,11 @@ public class GameManager : MonoBehaviour
             }
 
             PhoneUpdate();
-            if (publicServices.Count == 0)
+
+            if(publicServices.Count == 0 || DateTime.Compare(date, new DateTime(2015, 12, 12)) > 0)
+            {
                 EndGame();
+            }
         }
 
         StartCoroutine(DateUpdate());
@@ -424,7 +520,13 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        panelEnd.SetActive(true);
+        if(publicServices.Count == 0)
+            panelEnd[0].SetActive(true);
+        else if(publicServices.Count > 1)
+            panelEnd[1].SetActive(true);
+        else
+            panelEnd[2].SetActive(true);
+
     }
 
     public void CloseGame()

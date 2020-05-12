@@ -22,7 +22,11 @@
 			<Path>New_SoundBank.bnk</Path>
 			<IncludedEvents>
 				<Event Id="1761501022" Name="Book" ObjectPath="\Events\Default Work Unit\Book" DurationType="OneShot" DurationMin="1.160998" DurationMax="1.695057"/>
+				<Event Id="3991942870" Name="Music" ObjectPath="\Events\Default Work Unit\Music" DurationType="Infinite"/>
 				<Event Id="3126687001" Name="Paper" ObjectPath="\Events\Default Work Unit\Paper" DurationType="OneShot" DurationMin="0.732154" DurationMax="1.138866"/>
+				<Event Id="3104856687" Name="Phone" ObjectPath="\Events\Default Work Unit\Phone" DurationType="OneShot" DurationMin="0.423764" DurationMax="0.571791"/>
+				<Event Id="3644310780" Name="Start_Ring" ObjectPath="\Events\Default Work Unit\Start_Ring" DurationType="Infinite"/>
+				<Event Id="2651296214" Name="Stop_Ring" ObjectPath="\Events\Default Work Unit\Stop_Ring" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
 				<File Id="7444912" Language="SFX">
@@ -43,15 +47,23 @@
 				</File>
 				<File Id="319002021" Language="SFX">
 					<ShortName>ring.wav</ShortName>
-					<Path>SFX\ring_10C4C929.wem</Path>
+					<Path>SFX\ring_D79FB2B7.wem</Path>
 				</File>
 				<File Id="400604506" Language="SFX">
 					<ShortName>paper_1.wav</ShortName>
 					<Path>SFX\paper_1_10C4C929.wem</Path>
 				</File>
+				<File Id="697075152" Language="SFX">
+					<ShortName>hang_phone.wav</ShortName>
+					<Path>SFX\hang_phone_10C4C929.wem</Path>
+				</File>
 				<File Id="993919379" Language="SFX">
 					<ShortName>paper_3.wav</ShortName>
 					<Path>SFX\paper_3_10C4C929.wem</Path>
+				</File>
+				<File Id="1028278277" Language="SFX">
+					<ShortName>pick_phone.wav</ShortName>
+					<Path>SFX\pick_phone_10C4C929.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>

@@ -14,7 +14,11 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID BOOK = 1761501022U;
+        static const AkUniqueID MUSIC = 3991942870U;
         static const AkUniqueID PAPER = 3126687001U;
+        static const AkUniqueID PHONE = 3104856687U;
+        static const AkUniqueID START_RING = 3644310780U;
+        static const AkUniqueID STOP_RING = 2651296214U;
     } // namespace EVENTS
 
     namespace BANKS

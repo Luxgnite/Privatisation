@@ -3,28 +3,6 @@
 	<AudioObjects>
 		<WorkUnit Name="Default Work Unit" ID="{A294AE99-83D8-4B8E-AE43-47196FEE2B40}" PersistMode="Standalone">
 			<ChildrenList>
-				<Sound Name="ring" ID="{87B66F51-F815-41B9-8362-54E4AB72A1AE}" ShortID="756945501">
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3FD09C9-C86F-4451-9BD0-F937F5E9C893}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{C58B5302-1C4A-45A4-8EBA-74FCB13A772B}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<AudioFileSource Name="ring" ID="{B66C72EF-157D-4E72-A9B1-182CCED30D55}">
-							<Language>SFX</Language>
-							<AudioFile>ring.wav</AudioFile>
-							<MediaIDList>
-								<MediaID ID="319002021"/>
-							</MediaIDList>
-						</AudioFileSource>
-					</ChildrenList>
-					<ActiveSourceList>
-						<ActiveSource Name="ring" ID="{B66C72EF-157D-4E72-A9B1-182CCED30D55}" Platform="Linked"/>
-					</ActiveSourceList>
-				</Sound>
 				<RandomSequenceContainer Name="Book" ID="{35AB79A5-6980-4114-826B-B1E56E14A30F}" ShortID="596224949">
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -158,6 +136,69 @@
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
+				</RandomSequenceContainer>
+				<RandomSequenceContainer Name="Phone" ID="{44159D1E-737A-40DD-81FD-962554B92175}" ShortID="485599371">
+					<PropertyList>
+						<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3FD09C9-C86F-4451-9BD0-F937F5E9C893}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{C58B5302-1C4A-45A4-8EBA-74FCB13A772B}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="hang_phone" ID="{674D38D1-F9F1-4F04-9654-31BAC43FEC78}" ShortID="295569089">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3FD09C9-C86F-4451-9BD0-F937F5E9C893}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{C58B5302-1C4A-45A4-8EBA-74FCB13A772B}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="hang_phone" ID="{5EA9111E-10E8-494D-B7B9-3F3C07A1FA1B}">
+									<Language>SFX</Language>
+									<AudioFile>hang_phone.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="697075152"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="hang_phone" ID="{5EA9111E-10E8-494D-B7B9-3F3C07A1FA1B}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="pick_phone" ID="{008A8CEA-02A4-4CB0-A8B2-CBA74345C123}" ShortID="299545470">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D3FD09C9-C86F-4451-9BD0-F937F5E9C893}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{C58B5302-1C4A-45A4-8EBA-74FCB13A772B}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="pick_phone" ID="{DF319896-314C-4251-BF65-6847F878AA07}">
+									<Language>SFX</Language>
+									<AudioFile>pick_phone.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="1028278277"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="pick_phone" ID="{DF319896-314C-4251-BF65-6847F878AA07}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+					<Playlist>
+						<ItemRef Name="pick_phone" ID="{008A8CEA-02A4-4CB0-A8B2-CBA74345C123}"/>
+						<ItemRef Name="hang_phone" ID="{674D38D1-F9F1-4F04-9654-31BAC43FEC78}"/>
+					</Playlist>
 				</RandomSequenceContainer>
 			</ChildrenList>
 		</WorkUnit>

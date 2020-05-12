@@ -24,6 +24,9 @@ MonoBehaviour:
   - 1
   publicService2: {fileID: 11400000, guid: 4ed48c0e09954bd40a32f5f18c7dcf67, type: 2}
   sentencesPublicService2:
-  - Bonjour. J'aime les hopitaux.
+  - "Heureux d'avoir r\xE9ussi \xE0 vous contacter, votre Pr\xE9sidence. Au vu d\xE9veloppement
+    actuel des h\xF4pitaux, je pense qu'il serait avis\xE9 de les remettre entre
+    les mains du priv\xE9 pour nous permettre de d\xE9velopper un syst\xE8me de sant\xE9
+    exemplaire. "
   percentagesSencences2:
   - 1

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6c3c2df70393d46a6c0360177e052a, type: 3}
+  m_Name: Electricty3
+  m_EditorClassIdentifier: 
+  title: Coupure de courant infernale
+  text: "Un coupure de courant, d\xFB \xE0 une erreur humaine, est surv\xE9nu la
+    journ\xE9e derni\xE8re. La remise en tension se r\xE9v\xE8le actuellement impossible
+    d\xFB \xE0 un manque de maintenance depuis la privatisation de l'entreprise de
+    distribution \xE9lectrique. L'Etat s'est engag\xE9 \xE0 vers\xE9 4 millions pour
+    la reconstruction des infrastractures."

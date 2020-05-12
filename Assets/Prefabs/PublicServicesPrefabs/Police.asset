@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Police
   m_EditorClassIdentifier: 
   name: Police
-  cost: -999
-  income: 1500
+  cost: -1000
+  income: 200
   privMalus: 100
-  budgetAllowed: 250
-  debt: -10000
+  budgetAllowed: 200
+  debt: -2500
   treasury: 0
-  profitTendency: 0.4
+  profitTendency: 0.1
   newsStory: {fileID: 11400000, guid: af1db05eb2fd532439011012aaae265c, type: 2}

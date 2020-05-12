@@ -25,6 +25,53 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Music" ID="{1E597A4B-C253-475C-BB0F-A8883310D25B}">
+					<ChildrenList>
+						<Action Name="" ID="{445ADD92-D2E9-4228-A36C-7FD5E95442B8}" ShortID="91218022">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Music" ID="{602C94D4-4232-431B-9463-A1E86682BB50}" WorkUnitID="{2FCC6AA7-0ED7-45F7-B631-1BE57B41B4B6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Phone" ID="{866C64BF-66C3-46E0-990B-3058359A874C}">
+					<ChildrenList>
+						<Action Name="" ID="{0721C212-621B-44D6-9EAB-9FFDBCC28558}" ShortID="944015506">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Phone" ID="{44159D1E-737A-40DD-81FD-962554B92175}" WorkUnitID="{A294AE99-83D8-4B8E-AE43-47196FEE2B40}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Start_Ring" ID="{5BE9990B-4725-490A-8C37-CD0391B13808}">
+					<ChildrenList>
+						<Action Name="" ID="{31B459C4-5D69-4DC5-BD1B-EE63FABB3B5B}" ShortID="893463487">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Ringing" ID="{13B69A5F-7BC8-4BBE-B632-C148E171CA31}" WorkUnitID="{2FCC6AA7-0ED7-45F7-B631-1BE57B41B4B6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_Ring" ID="{5D97ACD0-A5BC-4622-88C5-93B34E998609}">
+					<ChildrenList>
+						<Action Name="" ID="{0BD41A25-E04C-4017-8C0B-C27C933A7D87}" ShortID="65193899">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Ringing" ID="{13B69A5F-7BC8-4BBE-B632-C148E171CA31}" WorkUnitID="{2FCC6AA7-0ED7-45F7-B631-1BE57B41B4B6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

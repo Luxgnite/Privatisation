@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c6c3c2df70393d46a6c0360177e052a, type: 3}
   m_Name: Hospital1
   m_EditorClassIdentifier: 
-  title: "Hopitaux n'ont jamais \xE9t\xE9 aussi rentables!"
+  title: "Les hopitaux ne sont jamais aussi bien port\xE9s!"
   text: "La rentabilit\xE9 des hopitaux n'a jamais \xE9t\xE9 aussi \xE9l\xE9v\xE9e!
-    Si vous voulez \xEAtre soign\xE9s en priorit\xE9, il faut payer un prix plus
-    \xE9lev\xE9."
+    Pour autant, certaines critiques se font ressentir chez les patients les moins
+    dot\xE9s, critiquant notamment les services \xE0 deux vitesses."

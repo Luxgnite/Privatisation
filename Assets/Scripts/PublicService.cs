@@ -96,7 +96,7 @@ public class PublicService
         }
     }
 
-    public int Balance
+    public int NaturalBalance
     {
         get
         {
@@ -104,11 +104,19 @@ public class PublicService
         }
     }
 
+    public int OverallBalance
+    {
+        get
+        {
+            return income + cost + BudgetAllowed;
+        }
+    }
+
     public float Desirability
     {
         get
         {
-            return Balance/GameManager._instance.privateInvestMinValue;
+            return ((NaturalBalance * (1 + profitTendency))/GameManager._instance.privateInvestMinValue);
         }
     }
 
@@ -116,7 +124,82 @@ public class PublicService
     {
         get
         {
-            return (int) (Income * (GameManager._instance.plusValueMultiplier * Desirability));
+            int plusvalue = (int)(income * profitTendency * GameManager._instance.plusValueMultiplier + (((NaturalBalance < 0 ? 0 : NaturalBalance) * (GameManager._instance.plusValueMultiplier * Desirability))));
+            if (plusvalue < 0)
+                plusvalue = 0;
+            return plusvalue;
+        }
+    }
+
+    public int NextMonthDebt
+    {
+        get
+        {
+            int tempDebt = debt;
+            //On ajoute à la trésorie les revenus + budget, et on enlève les coûts.
+            int tempTreasury = OverallBalance + treasury;
+            //Si la trésorie devient négative, on l'ajoute alors à la dette
+            if (tempTreasury < 0)
+            {
+                tempDebt += tempTreasury;
+                tempTreasury = 0;
+            }
+            //Si la trésorie est positive, on rembourse une partie de la dette
+            else
+            {
+                //Calcul de la part à payer
+                int debtPayment = (int)(GameManager._instance.debtConvertRate * tempTreasury);
+                //Si la dette est intégralement remboursée avec la somme, on met la dette à 0 et on soustrait la dette de la trésorie
+                if (tempDebt + debtPayment > 0)
+                {
+                    tempTreasury += tempDebt;
+                    tempDebt = 0;
+                }
+                //Sinon, on soustrait de la trésorie la part à payer et on retire de la dette la part payée
+                else
+                {
+                    tempDebt += debtPayment;
+                    tempTreasury -= debtPayment;
+                }
+            }
+
+            return tempDebt;
+        }
+    }
+
+    public int NextMonthDividende
+    {
+        get
+        {
+            int tempDebt = debt;
+            //On ajoute à la trésorie les revenus + budget, et on enlève les coûts.
+            int tempTreasury = OverallBalance + treasury;
+            //Si la trésorie devient négative, on l'ajoute alors à la dette
+            if (tempTreasury < 0)
+            {
+                tempDebt += tempTreasury;
+                tempTreasury = 0;
+            }
+            //Si la trésorie est positive, on rembourse une partie de la dette
+            else
+            {
+                //Calcul de la part à payer
+                int debtPayment = (int)(GameManager._instance.debtConvertRate * tempTreasury);
+                //Si la dette est intégralement remboursée avec la somme, on met la dette à 0 et on soustrait la dette de la trésorie
+                if (tempDebt + debtPayment > 0)
+                {
+                    tempTreasury += tempDebt;
+                    tempDebt = 0;
+                }
+                //Sinon, on soustrait de la trésorie la part à payer et on retire de la dette la part payée
+                else
+                {
+                    tempDebt += debtPayment;
+                    tempTreasury -= debtPayment;
+                }
+            }
+
+            return tempTreasury;
         }
     }
 
@@ -129,21 +212,39 @@ public class PublicService
 
     public void TimeUpdate()
     {
-        cost = (int) (cost * (1f + Random.Range(-0.1f, 0.1f)));
-        if ((debt + GameManager._instance.debtConvertRate * (Balance + BudgetAllowed)) >= 0)
+        //On ajoute à la trésorie les revenus + budget, et on enlève les coûts.
+        treasury += OverallBalance;
+        //Si la trésorie devient négative, on l'ajoute alors à la dette
+        if (treasury < 0)
         {
-            treasury += debt + Balance + BudgetAllowed;
-            debt = 0;
+            debt += treasury;
+            treasury = 0;
         }
+        //Si la trésorie est positive, on rembourse une partie de la dette
         else
         {
-            debt = (int)(debt + GameManager._instance.debtConvertRate * (Balance + BudgetAllowed));
-            treasury += (int)((1f - GameManager._instance.debtConvertRate) * (Balance + BudgetAllowed));
+            //Calcul de la part à payer
+            int debtPayment =(int) (GameManager._instance.debtConvertRate * treasury);
+            //Si la dette est intégralement remboursée avec la somme, on met la dette à 0 et on soustrait la dette de la trésorie
+            if (debt + debtPayment > 0)
+            {
+                treasury += debt;
+                debt = 0;
+            }
+            //Sinon, on soustrait de la trésorie la part à payer et on retire de la dette la part payée
+            else
+            {
+                debt += debtPayment;
+                treasury -= debtPayment;
+            }
         }
+
         float debtSlow = 0;
         debtSlow =  ((debt / GameManager._instance.debtSlowingEffect) > 1f) ?  0.99f : debt / GameManager._instance.debtSlowingEffect;
         income = (int)(income * (1f + (profitTendency * (1f-debtSlow)) + Random.Range(-0.1f, 0.1f)));
+        cost = (int)(cost * (1f + Random.Range(-0.1f, 0.1f)));
         privMalus = (int)(privMalus * (1 + (profitTendency / 2)));
+
     }
 
     public void NewsUpdate()

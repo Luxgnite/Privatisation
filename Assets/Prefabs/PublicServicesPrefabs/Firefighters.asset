@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Firefighters
   m_EditorClassIdentifier: 
   name: Pompiers
-  cost: -999
-  income: 1500
+  cost: -1500
+  income: 150
   privMalus: 100
-  budgetAllowed: 250
+  budgetAllowed: 150
   debt: -10000
   treasury: 0
-  profitTendency: 0.4
+  profitTendency: 0.05
   newsStory: {fileID: 11400000, guid: aaf4a204da8c14f4db6811e30a605ac0, type: 2}

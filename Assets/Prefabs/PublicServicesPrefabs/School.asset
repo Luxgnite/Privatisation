@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 296775840ed5d054eb0c4d16effc8802, type: 3}
-  m_Name: Assurance
+  m_Name: School
   m_EditorClassIdentifier: 
-  name: "Am\xE9li"
-  cost: -999
-  income: 1500
+  name: Ecole
+  cost: -1000
+  income: 100
   privMalus: 100
-  budgetAllowed: 250
+  budgetAllowed: 400
   debt: -10000
   treasury: 0
-  profitTendency: 0.4
+  profitTendency: 0.1
   newsStory: {fileID: 11400000, guid: c73f1e6b1376e024b830ea83c705c4ea, type: 2}
