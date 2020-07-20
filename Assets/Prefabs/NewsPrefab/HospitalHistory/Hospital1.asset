@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Hospital1
   m_EditorClassIdentifier: 
   title: "Les hopitaux ne sont jamais aussi bien port\xE9s!"
-  text: "La rentabilit\xE9 des hopitaux n'a jamais \xE9t\xE9 aussi \xE9l\xE9v\xE9e!
-    Pour autant, certaines critiques se font ressentir chez les patients les moins
+  text: "La rentabilit\xE9 des h\xF4pitaux n'a jamais \xE9t\xE9 aussi \xE9l\xE9v\xE9e
+    ! Pour autant, certaines critiques se font ressentir chez les patients les moins
     dot\xE9s, critiquant notamment les services \xE0 deux vitesses."

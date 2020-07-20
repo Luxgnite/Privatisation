@@ -4415,7 +4415,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Pr\xE9visions de Mai 2008"
+  m_Text: 'Privatiser un service publique :'
 --- !u!222 &1366039213
 CanvasRenderer:
   m_ObjectHideFlags: 0

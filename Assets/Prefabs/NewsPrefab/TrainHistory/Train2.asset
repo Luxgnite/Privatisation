@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Train2
   m_EditorClassIdentifier: 
   title: Infrastructures ferroviaires dangereuses
-  text: "Depuis la revente du service ferroviaire, le train est bien moins emprunter
-    qu'auparavant. De nombreux individus remarquent une manque de desservicement
-    dans les zones les plus retranch\xE9s des villes et campagnes, voir pour certains,
-    des chemins seraient devenus inqui\xE9tant d'usure par manque d'entretien."
+  text: "Depuis la revente du service ferroviaire, le train est bien moins emprunt\xE9
+    qu'auparavant. De nombreux individus remarquent un manquement des trains \xE0
+    desservir les zones les plus retranch\xE9es des villes et campagnes. Pour certains,
+    les chemins de fer seraient devenus inqui\xE9tants de par leur usure et leur
+    manque d'entretien."

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: "Un couple tente de mettre en justice une caserne de pompiers priv\xE9,
     en vain"
-  text: "Un couple n'ayant pas souscris \xE0 un abonnement aux pompiers priv\xE9s
-    ont vu leur demeure br\xFBl\xE9. Ils ont eu beau appel\xE9 les pompiers, ceux-ci
-    ne sont pas venus \xE0 leur aide car \"ils ne faisaient pas parti de la liste
+  text: "Un couple n'ayant pas souscrit \xE0 un abonnement aux pompiers priv\xE9s
+    on vu leur demeure br\xFBl\xE9. Ils ont eu beau appel\xE9 les pompiers, ceux-ci
+    ne sont pas venus \xE0 leur aide, car \"ils ne faisaient pas parti de la liste
     des souscrivants\"."

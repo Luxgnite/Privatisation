@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Electricty3
   m_EditorClassIdentifier: 
   title: Coupure de courant infernale
-  text: "Un coupure de courant, d\xFB \xE0 une erreur humaine, est surv\xE9nu la
-    journ\xE9e derni\xE8re. La remise en tension se r\xE9v\xE8le actuellement impossible
-    d\xFB \xE0 un manque de maintenance depuis la privatisation de l'entreprise de
-    distribution \xE9lectrique. L'Etat s'est engag\xE9 \xE0 vers\xE9 4 millions pour
-    la reconstruction des infrastractures."
+  text: "Une coupure de courant, d\xFB \xE0 une erreur humaine, est survenue la journ\xE9e
+    derni\xE8re. La remise en tension se r\xE9v\xE8le actuellement impossible due
+    \xE0 un manque de maintenance depuis la privatisation de l'entreprise de distribution
+    \xE9lectrique. L'Etat s'est engag\xE9 \xE0 vers\xE9 4 millions pour la reconstruction
+    des infrastructures."

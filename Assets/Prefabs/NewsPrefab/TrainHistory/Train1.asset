@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Train1
   m_EditorClassIdentifier: 
   title: "Le train, moyen de moins en moins privil\xE9gi\xE9"
-  text: "Le train \xE0 vu sa part de voyageurs descendre de 30% les derniers mois.
-    Une explication \xE0 se ph\xE9nom\xE8ne serait d\xFB \xE0 une augmentation du
-    prix des tickets, mais aussi une comp\xE9tition mal g\xE9r\xE9e pour le partage
-    du syst\xE8me ferroviaire entre les entreprises."
+  text: "Le train \xE0 vu sa part de voyageurs descendre de 30 % les derniers mois.
+    Une explication \xE0 ce ph\xE9nom\xE8ne l'augmentation du prix des tickets, mais
+    aussi une comp\xE9tition mal g\xE9r\xE9e pour le partage du syst\xE8me ferroviaire
+    entre les entreprises."

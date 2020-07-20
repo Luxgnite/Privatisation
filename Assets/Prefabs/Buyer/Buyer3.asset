@@ -16,10 +16,10 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: ad7bd4b75d8c59841b5d1fedeff693e8, type: 3}
   publicService1: {fileID: 11400000, guid: ab42006154f93234ba8a6e437f1484e3, type: 2}
   sentencesPublicService1:
-  - "Je me permet de vous joindre solonellement pour vous faire une demande ch\xE8re
-    \xE0 mon coeur : je suis ici vous demander de donner plus de moyens \xE0 la police.
-    J'ai toujours eu \xE0 coeur de faire r\xE9gner l'ordre, et ces derniers temps,
-    les peu de moyens dont nous disposons pour les gardiens de l'ordre de suffisent
+  - "Je me permets de vous joindre solennellement pour vous faire une demande qui
+    m'est ch\xE8re : je suis ici vous demander de donner plus de moyens \xE0 la police.
+    J'ai toujours eu \xE0 c\u0153ur de faire r\xE9gner l'ordre, et ces derniers temps,
+    le peu de moyens dont nous disposons pour les gardiens de l'ordre ne suffisent
     plus. Si nous privatisons la police, cela nous permettrait de faire r\xE9gner
     la loi dans chaque endroit o\xF9 il nous l'\xE9tait auparavant, ne serait-ce
     pas un monde meilleur et plus juste ?"
